@@ -1,0 +1,363 @@
+/*I min body lägger jag saker som jag vill ska gälla på hela hemsidan. Textstil, bakgrund osv. */
+
+body {
+    background-color: rgb(41, 38, 38);
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #999;
+
+}
+
+/* Jag ville att det skulle vara lite luft till höger och vänster på min hemsida, men inte på min första sida med bakgrundsbilden
+därför la jag in lite padding i main*/
+main {
+    padding: 0 3rem;
+}
+
+/*När man skrollar på sidan så ville jag att det skulle rulla lite mjukare*/
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Jag valde att ha en bild som min bakgrundsbild på min första sida, jag använder min height 100 view port, så att bilden
+fyller ut hela sidan. Jag använder min-height för att det är säkrare, så jag säger till att den ska vara såhär hög, men
+den får gärna vara högre om utrymmet finns. Jag lägger till fixed så att bilden stannar kvar på första sidan och inte
+hänger med när man skrollar. */
+header {
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(15, 15, 15, 0.8), rgba(15, 15, 15, 0.6)), url('bilder/rök.avif');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 1rem;
+}
+
+/* Här väljer jag att få menyn att följa med när man skrollar, så man slipper skrolla upp och ner hela tiden. Menyn följer med 
+och det blir enkelt att klicka sig dit man vill. Alltså fäster jag menyn mot skärmen istället för mot hemsidan.
+Jag använder top och right för att säga till vart menyn ska stå. Högst upp i högra hörnet vid denna gång. */
+
+header nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+}
+
+/*Min meny lista, jag tog bort punkterna, jag la den så att den hamnar på rad istället för under varandra, margin och padding lägger
+jag till för att få bort marginaler och indrag som webbläsaren lägger till som standard. Gap lägger jag till 
+så att det blir lite mellanrum mellan mina knappar. Flex-end så att min meny hamnar till höger. */
+header nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    margin: 0;
+
+}
+
+
+/*Länkar är som standard inline och då kan jag inte använda mig utav padding, så då behöver jag köra en block på de som att de beter
+sig som ett ord istället, ligga kvar där det ligger men tar bara sin egen plats. Decoration none gör så att understrykningen
+som länkar vanligtvis har försvinner. Sedan ändrar jag färg, storlek och lägger en liten oval ram runt. */
+
+nav a {
+    display: inline-block;
+    padding: 0.35rem 0.7rem;
+    color: #999;
+    text-decoration: none;
+    border-radius: 999px;
+    border: 1px solid;
+    border-color: #444;
+    font-size: 0.7rem;
+}
+
+/*Jag ville att det skulle bli lite snyggare när musen åker över, så la till lite färger och en hover.*/
+
+nav a:hover {
+    background-color: rgb(31, 29, 29);
+    color: rgb(196, 142, 188);
+}
+
+
+/*Färger och fix, och la även till att det skulle vara lite längre mellanrum mellan varje bokstav. Jag ville även att mitt
+för och efternamn skulle ha lite mellanrum. Jag ville att mitt namn skulle hamna mer på mitten av första sidan, därav ganska
+mycket margin top. Font-size clamp använde jag för att säga till att det aldrig får bli mindre än 3rem, sikta på 13% av skärmens
+bredd men bli aldrig större än 5rem. */
+h1 {
+    color: rgba(196, 142, 188, 0.8);
+    text-align: left;
+    margin-top: 10rem;
+    font-size: clamp(3rem, 13vw, 5rem);
+    line-height: 1.2;
+    letter-spacing: 0.1em;
+
+}
+
+/*Färg, storlek och fix, la margin left 70% för att jag ville att det skulle ligga till höger.*/
+h2 {
+    color: rgba(196, 142, 188, 0.8);
+    margin-left: 70%;
+    font-style: italic;
+    border-top: 1px solid #444;
+    border-left: 1px solid #444;
+    padding-left: 1rem;
+    letter-spacing: 0.1em;
+}
+
+/*Säger till att det aldrig får bli bredare än 700 pixlar just för att det kan bli jobbigt att läsa då, detta gäller då
+alla mina sektioner*/
+
+#portfolio,
+#om,
+#kontakt {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+
+
+#portfolio ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/*Jag lägger till baseline så att min siffra hamnar med i line med min text. */
+#portfolio a {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid black;
+    text-decoration: none;
+}
+
+/*Lägger till last child så att jag får en border under min sista punkt i listan, */
+
+#portfolio li:last-child a {
+    border-bottom: 1px solid black;
+}
+
+/* använder flexshrink så att min siffra inte kläms ihop när bilden blir mindre. */
+#portfolio span {
+    color: #555;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+/*Använder transition så att den rosa färgen smyger in finare. Lägger den här istället för i hover, kan bli ryckigt i hovern.*/
+#portfolio h4 {
+    color: #999;
+    font-size: 1.75rem;
+    font-weight: normal;
+    margin: 0 0 0.3rem;
+    transition: color 0.2s;
+}
+
+#portfolio p {
+    color: #777;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/*Gör en after så att min css skapar ett eget element som inte finns i html koden, så jag kan få in en liten pil. Jag har
+transition så att pilen rör sig mjukare när musen kommer dit. Jag använder margin auto så att pilen hamnar längst till höger,
+annars hade den lagt sig närmare texten. */
+
+#portfolio a::after {
+    content: "↗";
+    color: rgb(196, 142, 188);
+    margin-left: auto;
+    transition: transform 0.2s;
+}
+
+#portfolio a:hover h4 {
+    color: rgb(196, 142, 188);
+
+}
+
+/* Jag gör så att min lilla pil flyttar sig lite till höger när musen glider över boxen. Hade jag velat att den skulle flytta till 
+vänster så hade jag skrivit -4px.*/
+#portfolio a:hover::after {
+    transform: translateX(4px);
+}
+
+#portfolio h3 {
+    color: #666;
+    font-size: 1.5rem;
+    font-weight: normal;
+    letter-spacing: 0.15em;
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+#om {
+    text-align: center;
+}
+
+#om h3 {
+    color: #666;
+    font-size: 1.5rem;
+    font-weight: normal;
+    letter-spacing: 0.15em;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    margin-top: 5rem;
+}
+
+
+#om ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#om li {
+    padding: 1.5rem 0;
+    border-top: 1px solid black;
+    text-align: center;
+}
+
+#erfarenhet h3 {
+    color: #666;
+    font-size: 1.5rem;
+    font-weight: normal;
+    letter-spacing: 0.15em;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    margin-top: 5rem;
+}
+
+/*Jag ville att mina erfarenheter skulle lägga sig i boxar bredvid varandra istället för under varandra. Så då körde jag på en grid. 
+Jag använder display grid som ger en kolumn, men lägger grid-template-columns: 1fr 1fr; i min media som säger till 
+att om platsen finns så vill jag ha 2 kolumner bredvid varandra. Lägger lite gap mellan boxarna.*/
+
+#erfarenhet ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1.5rem;
+}
+
+/* Gjorde så att texten i mina rutor blev lite mer genomskinlig, jag valde 0.6, hade jag valt opacity så hade jag gjort hela 
+elementet ljusare, men jag ville bara ha texten ljusare. Har gjort likadant på min border, men där valde jag att
+ha de ljusare. */
+#erfarenhet li {
+
+    padding: 1.5rem;
+    text-decoration: none;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+#kontakt h3 {
+    color: #666;
+    font-size: 1.5rem;
+    font-weight: normal;
+    letter-spacing: 0.15em;
+    margin-bottom: 2.5rem;
+    text-align: left;
+    margin-top: 5rem;
+}
+
+#kontakt div {
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+
+}
+
+#kontakt {
+    text-align: left;
+}
+
+/* Jag väljer genom aspect ratio att få en kvadradisk bild och sedan genom border radius göra den rund. Utan aspect
+ratio så hade border radius gjort bilden oval. Jag ville även ha den grå så att den skulle passa in i flödet. */
+
+#kontakt img {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+    filter: grayscale(1);
+}
+
+
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer li {
+    margin-bottom: 0.5rem;
+}
+/* Använder grid här med så att de hamnar på rad, slår ihop med min grid i min media också. Så att det blir 4 stycken 
+på rad. */
+footer {
+    display: grid;
+    gap: 2rem;
+    padding: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer div a {
+    text-decoration: none;
+    color: #999;
+}
+
+/*Använder mig av detta så att pilen endast läggs där det finns länkar som öppnar ny sida*/
+
+footer a[target="_blank"]::after {
+    content: "↗";
+    color: #666;
+    margin-left: 0.5rem;
+    transition: transform 0.2s;
+}
+
+footer a:hover {
+    color: rgb(196, 142, 188);
+}
+
+footer a:hover::after {
+    transform: translateX(4px);
+}
+
+
+
+@media (min-width: 768px) {
+    #erfarenhet ul {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    main {
+        padding: 0 15rem;
+    }
+
+    footer {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    #kontakt div {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    #kontakt p {
+        flex: 1;
+    }
+
+    #kontakt img {
+        flex-shrink: 0;
+    }
+}
