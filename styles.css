@@ -22,14 +22,13 @@ html {
 
 /* Jag valde att ha en bild som min bakgrundsbild på min första sida, jag använder min height 100 view port, så att bilden
 fyller ut hela sidan. Jag använder min-height för att det är säkrare, så jag säger till att den ska vara såhär hög, men
-den får gärna vara högre om utrymmet finns. Jag lägger till fixed så att bilden stannar kvar på första sidan och inte
-hänger med när man skrollar. */
+den får gärna vara högre om utrymmet finns. . */
 header {
     min-height: 100vh;
     background-image: linear-gradient(rgba(15, 15, 15, 0.8), rgba(15, 15, 15, 0.6)), url('bilder/rök.avif');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     padding: 1rem;
 }
 
@@ -46,7 +45,8 @@ header nav {
 
 /*Min meny lista, jag tog bort punkterna, jag la den så att den hamnar på rad istället för under varandra, margin och padding lägger
 jag till för att få bort marginaler och indrag som webbläsaren lägger till som standard. Gap lägger jag till 
-så att det blir lite mellanrum mellan mina knappar. Flex-end så att min meny hamnar till höger. */
+så att det blir lite mellanrum mellan mina knappar. Flex-end så att min meny hamnar till höger. Lägger en wrap så
+att de menyn bryts på mobilen. */
 header nav ul {
     list-style: none;
     padding: 0;
@@ -54,6 +54,7 @@ header nav ul {
     gap: 0.5rem;
     justify-content: flex-end;
     margin: 0;
+    flex-wrap: wrap;
 
 }
 
@@ -95,10 +96,9 @@ h1 {
 
 }
 
-/*Färg, storlek och fix, la margin left 70% för att jag ville att det skulle ligga till höger.*/
+/*Färg, storlek och fix, */
 h2 {
     color: rgba(196, 142, 188, 0.8);
-    margin-left: 70%;
     font-style: italic;
     border-top: 1px solid #444;
     border-left: 1px solid #444;
@@ -333,7 +333,9 @@ footer a:hover::after {
 }
 
 
-
+/*Lägger en background attachment fixed i min media så att bilden står stilla medan man skrollar. På mobilen la jag 
+scroll eftersom fixed beter sig konstigt där.
+La margin left 70% för att jag ville att det skulle ligga till höger. */
 @media (min-width: 768px) {
     #erfarenhet ul {
         grid-template-columns: 1fr 1fr;
@@ -359,5 +361,13 @@ footer a:hover::after {
 
     #kontakt img {
         flex-shrink: 0;
+    }
+
+    h2 {
+        margin-left: 70%;
+    }
+
+    header {
+        background-attachment: fixed;
     }
 }
